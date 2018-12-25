@@ -62,10 +62,10 @@ namespace MyCoolWebServer.Server
 
                 var bytesAsString = Encoding.UTF8.GetString(data.Array, 0, numberOfBytesRead);
 
+                request.Append(bytesAsString);
+
                 if (numberOfBytesRead < 1024)
                     break;
-
-                request.Append(bytesAsString);
             }
 
             return new HttpRequest(request.ToString());

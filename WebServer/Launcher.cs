@@ -1,6 +1,7 @@
 ﻿
 namespace MyCoolWebServer
 {
+    using Application;
     using Server;
     using Server.Contracts;
     using Server.Routing;
@@ -8,8 +9,6 @@ namespace MyCoolWebServer
 
     public class Launcher : IRunnable
     {
-        private WebServer webServer;
-
         public static void Main()
         {
             new Launcher().Run();
@@ -17,8 +16,11 @@ namespace MyCoolWebServer
 
         public void Run()
         {
+            IApplication application = new MainApplication();
             IAppRouteConfig routeConfig = new AppRouteConfig();
-            webServer = new WebServer(8888, routeConfig);
+            application.Start(routeConfig);
+
+            var webServer = new WebServer(1337, routeConfig);
             webServer.Run();
         }
     }

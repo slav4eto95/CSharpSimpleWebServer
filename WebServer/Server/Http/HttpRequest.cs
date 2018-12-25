@@ -48,8 +48,7 @@ namespace MyCoolWebServer.Server.Http
 
         public void ParseRequest(string requestString)
         {
-            string[] requestLines = requestString
-                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            string[] requestLines = requestString.Split(Environment.NewLine);
 
             if (!requestLines.Any())
             {
