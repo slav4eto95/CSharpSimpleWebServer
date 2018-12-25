@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyCoolWebServer", "WebServer\MyCoolWebServer.csproj", "{6966C9A5-1781-47A7-A885-5248CA7C80ED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6966C9A5-1781-47A7-A885-5248CA7C80ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6966C9A5-1781-47A7-A885-5248CA7C80ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6966C9A5-1781-47A7-A885-5248CA7C80ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6966C9A5-1781-47A7-A885-5248CA7C80ED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {548E8F10-6D9A-479C-912D-6C3B9703EA5F}
+	EndGlobalSection
+EndGlobal
