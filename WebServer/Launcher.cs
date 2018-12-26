@@ -18,7 +18,7 @@ namespace MyCoolWebServer
         {
             IApplication application = new MainApplication();
             IAppRouteConfig routeConfig = new AppRouteConfig();
-            application.Start(routeConfig);
+            application.Configure(routeConfig);
 
             var webServer = new WebServer(1337, routeConfig);
             webServer.Run();

@@ -8,9 +8,10 @@ namespace MyCoolWebServer.Application
 
     public class MainApplication : IApplication
     {
-        public void Start(IAppRouteConfig appRouteConfig)
+        public void Configure(IAppRouteConfig appRouteConfig)
         {
-            appRouteConfig.AddRoute("/", new GetHandler(httpContext => new HomeController().Index()));
+            appRouteConfig
+                .Get("/", request => new HomeController().Index());
         }
     }
 }

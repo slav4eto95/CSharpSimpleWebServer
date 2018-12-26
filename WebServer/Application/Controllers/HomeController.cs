@@ -1,6 +1,7 @@
 ﻿
 namespace MyCoolWebServer.Application.Controllers
 {
+    using Server.Enums;
     using Server.Http.Contracts;
     using Server.Http.Response;
 
@@ -8,7 +9,7 @@ namespace MyCoolWebServer.Application.Controllers
     {
         public IHttpResponse Index()
         {
-            return new ViewResponse(Server.Enums.HttpStatusCode.OK, new HomeIndexView());
+            return new ViewResponse(HttpStatusCode.OK, new HomeIndexView());
         }
     }
 }

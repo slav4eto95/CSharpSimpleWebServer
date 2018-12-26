@@ -131,8 +131,6 @@ namespace MyCoolWebServer.Server.Http
 
         private void ParseQuery(string query, IDictionary<string, string> dict)
         {
-
-
             if (!query.Contains("="))
                 return;
 

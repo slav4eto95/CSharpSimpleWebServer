@@ -5,6 +5,6 @@ namespace MyCoolWebServer.Server.Contracts
 
     public interface IApplication
     {
-        void Start(IAppRouteConfig appRouteConfig);
+        void Configure(IAppRouteConfig appRouteConfig);
     }
 }

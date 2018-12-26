@@ -29,28 +29,31 @@ namespace MyCoolWebServer.Server
         {
             var httpRequest = await ReadRequest();
 
-            var httpContext = new HttpContext(httpRequest);
+            if (httpRequest != null)
+            {
+                var httpContext = new HttpContext(httpRequest);
 
-            var httpResponse = new HttpHandler(ServerRouteConfig).Handle(httpContext);
+                var httpResponse = new HttpHandler(ServerRouteConfig).Handle(httpContext);
 
-            var responseBytes = Encoding.UTF8.GetBytes(httpResponse.ToString());
+                var responseBytes = Encoding.UTF8.GetBytes(httpResponse.ToString());
 
-            var byteSegments = new ArraySegment<byte>(responseBytes);
-            
-            await Client.SendAsync(responseBytes, SocketFlags.None);
+                var byteSegments = new ArraySegment<byte>(responseBytes);
 
-            Console.WriteLine($"-----REQUEST-----");
-            Console.WriteLine(httpRequest);
-            Console.WriteLine($"-----RESPONSE-----");
-            Console.WriteLine(httpResponse.ToString());
-            Console.WriteLine();
+                await Client.SendAsync(responseBytes, SocketFlags.None);
+
+                Console.WriteLine($"-----REQUEST-----");
+                Console.WriteLine(httpRequest);
+                Console.WriteLine($"-----RESPONSE-----");
+                Console.WriteLine(httpResponse.ToString());
+                Console.WriteLine();
+            }
 
             Client.Shutdown(SocketShutdown.Both);
         }
 
         public async Task<IHttpRequest> ReadRequest()
         {
-            var request = new StringBuilder();
+            var result = new StringBuilder();
             var data = new ArraySegment<byte>(new byte[1024]);
             
             while (true)
@@ -62,13 +65,16 @@ namespace MyCoolWebServer.Server
 
                 var bytesAsString = Encoding.UTF8.GetString(data.Array, 0, numberOfBytesRead);
 
-                request.Append(bytesAsString);
+                result.Append(bytesAsString);
 
                 if (numberOfBytesRead < 1024)
                     break;
             }
 
-            return new HttpRequest(request.ToString());
+            if (result.Length == 0)
+                return null;
+
+            return new HttpRequest(result.ToString());
         }
     }
 }
