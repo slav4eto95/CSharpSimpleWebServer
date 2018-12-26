@@ -3,7 +3,6 @@ namespace MyCoolWebServer.Application
 {
     using Controllers;
     using Server.Contracts;
-    using Server.Handlers;
     using Server.Routing.Contracts;
 
     public class MainApplication : IApplication
